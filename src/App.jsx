@@ -1,48 +1,47 @@
 import { useState, useEffect, use } from 'react'
 import './App.css'
 
-function App() {
-  const [enabled, setEnabled] = useState(false)
-  const [position, setPosition] = useState({ x: 0, y: 0 })
+const CAT_ENDPOINT_RANDOM_FACT = 'https://catfact.ninja/fact'
+// const CAT_ENDPOINT_IMAGE_URL = `https://cataas.com/cat/says/${firstWord}?size=50&color=red&json=true`;
+const CAT_PREFIX_IMAGE_URL = 'https://cataas.com'
+
+
+ export function App() {
+  const [fact, setFact] = useState('lorem ipsum dolor sit amet')
+  const [imageUrl, setImageUrl] = useState('')
+
 
   useEffect(() => {
-    console.log('useEffect called', {enabled})
+    fetch(CAT_ENDPOINT_RANDOM_FACT)
+    .then(response => response.json())
+    .then(data => {
+      const { fact } = data
+      setFact(fact)
 
-    const handleMove = (event) => {
-      const { clientX, clientY } = event
-      console.log('handleMove', {clientX, clientY})
-      setPosition({ x: clientX, y: clientY })
-    }
-    if (enabled) {
-    window.addEventListener('pointermove', handleMove)
-    }
-        return () => {
-      window.removeEventListener('pointermove', handleMove)
-    }
-  }, [enabled]) 
+      const threeFirstWords  = fact.split(' ', 3)
+
+      fetch(`https://cataas.com/cat/says/${threeFirstWords}?size=50&color=red&json=true`)
+      .then(response => response.json())
+      .then(response => {
+        const { url } = response
+        setImageUrl(url)
+        
+      })
+
+    })
+  }, [])
+  
 
 
 
+   
   return (
     <>
     <main>
-      <div style={{ 
-        position: 'absolute',
-        backgroundColor: '#09f',
-        borderRadius: '50%',
-        opacity: 0.8,
-        pointerEvents: 'none',
-        left: -20,
-        top: -20,
-        width: 40,
-        height: 40,
-        transform: `translate(${position.x}px, ${position.y}px)`
-      }}
-      />
-     <button onClick={() => setEnabled(!enabled)}>
-        {enabled ? 'Disable' : 'Enable'}
-        </button>
-        </main>
+  <h1> App de gaticos</h1>  
+    {fact && <p>{fact}</p>}
+    {imageUrl && <img src={imageUrl} alt={`Extrayendo la imagen de ${fact}`} />}
+    </main>
     </>
   )
 
