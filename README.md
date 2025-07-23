@@ -1,12 +1,10 @@
-# React + Vite
+Fatch Random: https://catfact.ninja/fact
+Image Random: https://cataas.com/cat/says/hello
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+- Recupera un hecho aleatorio de gatos de la primera api
+- Recuperar la 3 primeras palabras
+- Muestra una imagen de un gatos con las 3 primeras palabras
 
-Currently, two official plugins are available:
+- <img width="1525" height="868" alt="image" src="https://github.com/user-attachments/assets/b5e9152f-44bb-4c2f-b0c1-cc1009f4e74f" />
+<img width="1797" height="920" alt="image" src="https://github.com/user-attachments/assets/599dd1a9-9af4-450e-be21-a5def427f342" />
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
